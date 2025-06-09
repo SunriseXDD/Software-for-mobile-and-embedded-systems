@@ -1,0 +1,22 @@
+import kotlin.math.sqrt
+
+fun main() {
+    println("Введите катет:")
+    val katet = readLine()?.toDoubleOrNull() ?: run { //иначе не работает, обязательно ?: run
+        return
+    }
+
+    println("Введите первую букву: к - катет, г - гипотенуза, п - площадь")
+    when (readLine()) {
+        "к" -> println("Катет равен $katet")
+        "г" -> {
+            val gipotenuza = katet * sqrt(2.0)
+            println("Гипотенуза равна $gipotenuza")
+        }
+        "п" -> {
+            val ploshad = katet * katet / 2
+            println("Площадь равна $ploshad")
+        }
+        else -> println("Неизвестная команда")
+    }
+}
