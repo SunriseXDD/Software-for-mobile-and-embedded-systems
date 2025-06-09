@@ -1,0 +1,45 @@
+/*
+Тестировал в экселе при n=3, а любое
+*/
+fun main() {
+    println("Введите значение a")
+    val a = readLine()?.toDoubleOrNull() ?: run {
+        return
+    }
+    
+    println("Введите количество членов ряда n")
+    val n = readLine()?.toIntOrNull() ?: run {
+        return
+    }
+    
+    println("Введите while, либо for")
+    val x = readLine()
+    
+    var sum = 0.0
+    var product = 1.0
+    var sum1 = 0.0
+    var product1 = 1.0
+    when (x) {
+        "for" -> {
+            for (k in 1..n) {
+                product *= (a + k - 1)
+                val term = 1.0 / product
+                sum += term
+                println("Член ряда $k: $term")
+            }
+            println("Сумма первых ${n+1} членов ряда: $sum")
+        }
+        
+        "while" -> {
+            var k = 1
+            while (k <= n) {
+                product1 *= (a + k - 1)
+                val term1 = 1.0 / product1
+                sum1 += term1
+                println("Член ряда $k: $term1")
+                k++
+            }
+            println("Сумма первых ${n+1} членов ряда: $sum1")
+        }
+    }
+}
